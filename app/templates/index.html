@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+    
+    <!-- Hoş Geldin Paneli (Cam Efektli) -->
+    <div class="glass-panel text-center mb-5">
+        <h1 class="display-4 fw-bold">Derinliklere Hoş Geldiniz</h1>
+        <p class="lead mt-3">Keşfedilen muazzam dalış noktalarını, su altı canlılarını ve deniz altı maceralarımızı burada günlüklüyoruz.</p>
+    </div>
+    
+    <!-- YENİ: Sadece giriş yapan kullanıcıya Dalış Ekleme Formu görünür -->
+    {% if current_user.is_authenticated %}
+    <div class="card mb-5 shadow-lg border-0">
+        <div class="card-header bg-turquoise fw-bold text-center fs-5">🤿 Yeni Dalış Günlüğü Ekle</div>
+        <div class="card-body text-dark p-4">
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-secondary">Dalış Noktası / Konu</label>
+                    {{ form.title(class="form-control", placeholder="Örn: Kaş Kanyon Dalışı, Resif Keşfi") }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-secondary">Deneyim Detayları</label>
+                    {{ form.body(class="form-control", rows=3, placeholder="Su altı nasıldı? Hangi balıkları veya mercanları gördünüz?") }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-secondary">Dalış Seviyesi / Ekipmanlar</label>
+                    {{ form.technologies(class="form-control", placeholder="Örn: Advanced Open Water, 30 Metre, Nitrox") }}
+                </div>
+                <button type="submit" class="btn btn-turquoise w-100 py-2 fs-5">Günlüğe Ekle</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <h2 class="mb-4 text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Son Dalış Keşifleri</h2>
+    
+    <!-- MEVCUT DALIŞLARIN LİSTESİ -->
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-dark">
+                    <h5 class="card-title text-turquoise fw-bold">📍 {{ project.title }}</h5>
+                    <p class="card-text mt-3">{{ project.body }}</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <span class="badge" style="background-color: #03045e;">{{ project.technologies }}</span>
+                    <hr>
+                    <small class="text-muted fw-bold">Dalgıç: {{ project.author.username }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- SAYFALAMA BUTONLARI -->
+    <div class="d-flex justify-content-between mt-4 mb-5">
+        {% if prev_url %}
+        <a href="{{ prev_url }}" class="btn btn-light shadow fw-bold text-primary">&larr; Daha Yeni Dalışlar</a>
+        {% else %}
+        <div></div>
+        {% endif %}
+        
+        {% if next_url %}
+        <a href="{{ next_url }}" class="btn btn-light shadow fw-bold text-primary">Eski Dalışlar &rarr;</a>
+        {% endif %}
+    </div>
+{% endblock %}

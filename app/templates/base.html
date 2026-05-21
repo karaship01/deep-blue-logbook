@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <title>Deep Blue - Dalış Günlüğü</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /* Harika bir deniz altı arka plan resmi */
+            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff; /* Yazılar genel olarak beyaz */
+        }
+        
+        /* Yarı saydam okyanus menüsü */
+        .navbar {
+            background-color: rgba(0, 119, 182, 0.85) !important; 
+            backdrop-filter: blur(8px);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        /* İçeriklerin arka planını yarı saydam yapalım ki deniz manzarası görünsün */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px 20px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* Dalış kartları için modern tasarım */
+        .card {
+            background-color: rgba(255, 255, 255, 0.92);
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+        }
+        
+        /* Turkuaz vurgular */
+        .text-turquoise { color: #00b4d8 !important; }
+        .bg-turquoise { background-color: #00b4d8 !important; color: white; }
+        .btn-turquoise { background-color: #00b4d8; color: white; border: none; font-weight: bold;}
+        .btn-turquoise:hover { background-color: #0077b6; color: white; }
+    </style>
+  </head>
+  <body>
+    <!-- Navigasyon Çubuğu -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 shadow">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">🌊 DEEP BLUE DIVE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ url_for('index') }}">Dalışlar</a></li>
+            {% if current_user.is_anonymous %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Giriş Yap</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Kayıt Ol</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Dalgıç Profilim</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{{ url_for('logout') }}">Çıkış</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <!-- Bildirim Mesajları -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info shadow-sm">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- Asıl İçerik Buraya Gelecek -->
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

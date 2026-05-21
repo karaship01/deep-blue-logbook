@@ -1,0 +1,10 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'cok-gizli-bir-anahtar'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'app.db')
+    
+    # EKSİK OLAN SATIR BURASI: Bir sayfada kaç proje görünecek?
+    PROJECTS_PER_PAGE = 3
