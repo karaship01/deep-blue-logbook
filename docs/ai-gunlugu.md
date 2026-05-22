@@ -28,3 +28,26 @@ Hata almanın aslında ortam (environment) ve sürüm kontrol (git) yönetimiyle
 
 ### Sonraki Oturum İçin Notlar
 GitHub'da uzak bir depo (repository) oluşturup `git push` ile bu yerel kodları buluta taşıyacağım. Ardından 10. Bölüm'deki (Şifre Sıfırlama) e-posta entegrasyonu kodlarını yazmaya başlayacağız.
+
+---------------------------------------------------------------------------------------------------------
+
+## Oturum 2 - 22 Mayıs 2026
+
+### Hedef
+Proje yönergesinde ekstra (+5) puan getirecek olan "E-posta ile şifre sıfırlama akışı" özelliğini projeye entegre etmek. 
+
+### Kullandığım Mod ve Model
+Model: Gemini 3 Pro
+Görünüm: Editor (Kod entegrasyonu ve hata kontrolü için).
+
+### Ajanın Önerdiği Plan
+Ajan, şifre sıfırlama işlemi için JWT (JSON Web Token) kullanarak süreli ve güvenli bir link oluşturmayı önerdi. `Flask-Mail` ile e-postanın arka planda (asenkron) gönderilmesi için `threading` modülünü kullandık. Blueprint mimarisine henüz geçmediğimiz için, ajan kodları doğrudan mevcut monolitik yapımıza (`routes.py` ve `forms.py`) uyarlamamı sağladı.
+
+### Üretilen Kodda Düzelttiklerim
+- Mega-Tutorial notlarında şablonlar içindeki `url_for('auth.reset_password')` kısımları, projemizde henüz Blueprint olmadığı için hata verecekti. Ajanın uyarısıyla bu kısımları doğrudan `url_for('reset_password')` olarak güncelledim.
+
+### Karşılaştığım Hatalar ve Çözümler
+- Ajanın ilk verdiği talimatlarda e-posta şablon dosyalarını (`email.py` ve template'ler) yaratma adımını atladığını fark ettim. Ajana durumu bildirip eksik dosyaların sıfırdan oluşturulmasını sağladım. Editördeki Türkçe karakter uyarılarının (yazım denetimi) kod hatası olmadığını ajandan teyit edip sürece devam ettim.
+
+### Bu Oturumdan Öğrendiğim
+Kullanıcı şifrelerinin veritabanında tutulmadığı bir senaryoda, güvenli şifre sıfırlamanın en iyi yolunun JWT gibi zaman aşımı olan kriptografik token'lar üretmek olduğunu öğrendim. Ajanın adımlarını körü körüne kopyalamak yerine dosya yapısını kendi gözümle kontrol etmenin (Vibe Coding felsefesi) önemini kavradım.
