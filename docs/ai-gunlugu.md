@@ -60,3 +60,24 @@ Kullanıcı şifrelerinin veritabanında tutulmadığı bir senaryoda, güvenli 
 
 ### Kullandığım Mod ve Model
 Model: Gemini 3 Pro (Hızlı kriz yönetimi ve zaman planlaması için).
+-------------------------------------------------------------------------------------------------------------------------------------------------## Oturum 4 - 24 Mayıs 2026 (Gece Mesaisi)
+
+### Hedef
+Bölüm 11 (Facelift) kapsamında projeye Bootstrap 5 entegre etmek ve tüm formları modernize etmek.
+
+### Kullandığım Mod ve Model
+Model: Gemini 3 Pro
+Görünüm: Editor
+
+### Ajanın Önerdiği Plan
+Ajan, `bootstrap-flask` paketini kurarak `base.html` dosyasını modern bir navigasyon çubuğu ile güncellemeyi önerdi. Ardından tüm formları (giriş, kayıt, profil düzenleme, şifre sıfırlama) Bootstrap'in `render_form` makrosu ile tek satırlık dinamik yapılara dönüştürdük.
+
+### Üretilen Kodda Düzelttiklerim
+- İlk `base.html` güncellemesinde "Kayıt Ol" butonu unutulmuştu, bunu fark edip ajanı uyararak navigasyona eklettim.
+- `reset_password_request.html` dosyasının önceki bölümlerde oluşturulmadığını fark ettik ve sıfırdan oluşturarak Bootstrap yapısına uygun hale getirdik.
+
+### Karşılaştığım Hatalar ve Çözümler
+- Yanlış ortamda (`venv` dışında) paket kurmaya çalışırken `opencv` ve `pandas` gibi projeyle alakasız paketlerin `requirements.txt` dosyasını bozması sorunuyla karşılaştım. Ajanın yönlendirmesiyle listeyi temizleyip sadece gerekli paketleri doğrudan sanal ortama kurarak çözdüm. Windows terminalinin `venv` karmaşasını `.\venv\Scripts\python -m flask run` komutunu kullanarak aştık.
+
+### Bu Oturumdan Öğrendiğim
+Terminalde `(venv)` yazsa bile Windows'un bazen ana Python ortamına kaçabildiğini ve komutları doğrudan yol belirterek çalıştırmanın en güvenli yöntem olduğunu öğrendim. Ayrıca Bootstrap makrolarının (`render_form`) frontend geliştirme sürecini ne kadar hızlandırdığını deneyimledim.
