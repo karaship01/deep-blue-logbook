@@ -51,3 +51,12 @@ Ajan, şifre sıfırlama işlemi için JWT (JSON Web Token) kullanarak süreli v
 
 ### Bu Oturumdan Öğrendiğim
 Kullanıcı şifrelerinin veritabanında tutulmadığı bir senaryoda, güvenli şifre sıfırlamanın en iyi yolunun JWT gibi zaman aşımı olan kriptografik token'lar üretmek olduğunu öğrendim. Ajanın adımlarını körü körüne kopyalamak yerine dosya yapısını kendi gözümle kontrol etmenin (Vibe Coding felsefesi) önemini kavradım.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+## Oturum 3 - 23 Mayıs 2026
+
+### Hedef
+11. Bölüm (Facelift - Arayüz İyileştirmesi) için hazırlık yapmak ve Bootstrap entegrasyonu öncesi projenin ana dokümantasyonunu (README) profesyonel bir görünüme kavuşturmak.
+
+### Kullandığım Mod ve Model
+Model: Gemini 3 Pro (Hızlı kriz yönetimi ve zaman planlaması için).
