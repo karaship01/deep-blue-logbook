@@ -8,10 +8,12 @@ from flask_login import LoginManager
 app = Flask(__name__)
 app.config.from_object(Config)
 bootstrap = Bootstrap5(app)
+from flask_moment import Moment
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 login.login_message = 'Bu sayfayı görmek için lütfen giriş yapın.'
+moment = Moment(app)
 
 from app import routes, models

@@ -42,13 +42,18 @@ class EditProfileForm(FlaskForm):
             user = db.session.scalar(sa.select(User).where(User.username == username.data))
             if user is not None:
                 raise ValidationError('Lütfen farklı bir kullanıcı adı seçin.')
-            
-from wtforms import TextAreaField
-from wtforms.validators import Length
 
-# ... mevcut kodların altına ekle:
 class ProjectForm(FlaskForm):
     title = StringField('Proje Başlığı', validators=[DataRequired()])
     body = TextAreaField('Proje Detayları', validators=[DataRequired(), Length(min=1, max=500)])
     technologies = StringField('Kullanılan Teknolojiler', validators=[DataRequired()])
     submit = SubmitField('Projeyi Ekle')
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('E-posta', validators=[DataRequired(), Email()])
+    submit = SubmitField('Şifre Sıfırlama İste')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Yeni Şifre', validators=[DataRequired()])
+    password_2 = PasswordField('Yeni Şifreyi Tekrar Girin', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Şifre Sıfırla')

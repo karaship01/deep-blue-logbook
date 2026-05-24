@@ -1,3 +1,4 @@
+from app.forms import LoginForm, RegistrationForm, EditProfileForm,ResetPasswordRequestForm, ResetPasswordForm
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
@@ -98,3 +99,22 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Profili Düzenle', form=form)
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        flash('Şifre sıfırlama talimatları e-posta adresinize gönderildi.')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html', title='Şifreyi Sıfırla', form=form)
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        flash('Şifreniz başarıyla değiştirildi.')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)

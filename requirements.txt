@@ -7,3 +7,4 @@ email-validator
 pyjwt
 flask-mail
 bootstrap-flask
+flask-moment
