@@ -1,0 +1,273 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-05-25 23:37+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: app/forms.py:10 app/forms.py:16 app/forms.py:33
+msgid "Kullanıcı Adı"
+msgstr ""
+
+#: app/forms.py:11 app/forms.py:18
+msgid "Şifre"
+msgstr ""
+
+#: app/forms.py:12
+msgid "Beni Hatırla"
+msgstr ""
+
+#: app/forms.py:13 app/routes.py:56 app/templates/base.html:29
+#: app/templates/login.html:5
+msgid "Giriş Yap"
+msgstr ""
+
+#: app/forms.py:17
+msgid "Email"
+msgstr ""
+
+#: app/forms.py:19
+msgid "Şifreyi Onayla"
+msgstr ""
+
+#: app/forms.py:20 app/routes.py:75 app/templates/base.html:32
+#: app/templates/register.html:5
+msgid "Kayıt Ol"
+msgstr ""
+
+#: app/forms.py:25 app/forms.py:45
+msgid "Lütfen farklı bir kullanıcı adı seçin."
+msgstr ""
+
+#: app/forms.py:30
+msgid "Lütfen farklı bir email adresi kullanın."
+msgstr ""
+
+#: app/forms.py:34
+msgid "Hakkımda"
+msgstr ""
+
+#: app/forms.py:35
+msgid "Kaydet"
+msgstr ""
+
+#: app/forms.py:48
+msgid "Proje Başlığı"
+msgstr ""
+
+#: app/forms.py:49
+msgid "Proje Detayları"
+msgstr ""
+
+#: app/forms.py:50
+msgid "Kullanılan Teknolojiler"
+msgstr ""
+
+#: app/forms.py:51
+msgid "Projeyi Ekle"
+msgstr ""
+
+#: app/forms.py:54
+msgid "E-posta"
+msgstr ""
+
+#: app/forms.py:55
+msgid "Şifre Sıfırlama İste"
+msgstr ""
+
+#: app/forms.py:58
+msgid "Yeni Şifre"
+msgstr ""
+
+#: app/forms.py:59
+msgid "Yeni Şifreyi Tekrar Girin"
+msgstr ""
+
+#: app/forms.py:60
+msgid "Şifre Sıfırla"
+msgstr ""
+
+#: app/routes.py:28
+msgid "Harika! Yeni proje başarıyla eklendi."
+msgstr ""
+
+#: app/routes.py:39 app/templates/base.html:23
+msgid "Ana Sayfa"
+msgstr ""
+
+#: app/routes.py:49
+msgid "Geçersiz kullanıcı adı veya şifre"
+msgstr ""
+
+#: app/routes.py:73
+msgid "Kayıt başarılı!"
+msgstr ""
+
+#: app/routes.py:82
+msgid "Kullanıcı bulunamadı."
+msgstr ""
+
+#: app/routes.py:96
+msgid "Profil güncellendi."
+msgstr ""
+
+#: app/routes.py:101 app/templates/user.html:12
+msgid "Profili Düzenle"
+msgstr ""
+
+#: app/routes.py:109
+msgid "Şifre sıfırlama talimatları e-posta adresinize gönderildi."
+msgstr ""
+
+#: app/routes.py:111 app/templates/login.html:13
+msgid "Şifreyi Sıfırla"
+msgstr ""
+
+#: app/routes.py:119
+msgid "Şifreniz başarıyla değiştirildi."
+msgstr ""
+
+#: app/templates/_post.html:13
+msgid "dedi ki:"
+msgstr ""
+
+#: app/templates/base.html:9
+msgid "Deep Blue Dalış Günlüğü"
+msgstr ""
+
+#: app/templates/base.html:36
+msgid "Profil"
+msgstr ""
+
+#: app/templates/base.html:39
+msgid "Çıkış Yap"
+msgstr ""
+
+#: app/templates/edit_profile.html:5
+msgid "Profilinizi Düzenleyin"
+msgstr ""
+
+#: app/templates/index.html:5
+msgid "Derinliklere Hoş Geldiniz"
+msgstr ""
+
+#: app/templates/index.html:6
+msgid ""
+"Keşfedilen muazzam dalış noktalarını, su altı canlılarını ve deniz altı "
+"maceralarımızı burada günlüklüyoruz."
+msgstr ""
+
+#: app/templates/index.html:11
+msgid "Yeni Dalış Günlüğü Ekle"
+msgstr ""
+
+#: app/templates/index.html:16
+msgid "Dalış Noktası / Konu"
+msgstr ""
+
+#: app/templates/index.html:17
+msgid "Örn: Kaş Kanyon Dalışı, Resif Keşfi"
+msgstr ""
+
+#: app/templates/index.html:20
+msgid "Deneyim Detayları"
+msgstr ""
+
+#: app/templates/index.html:21
+msgid "Su altı nasıldı? Hangi balıkları veya mercanları gördünüz?"
+msgstr ""
+
+#: app/templates/index.html:24
+msgid "Dalış Seviyesi / Ekipmanlar"
+msgstr ""
+
+#: app/templates/index.html:25
+msgid "Örn: Advanced Open Water, 30 Metre, Nitrox"
+msgstr ""
+
+#: app/templates/index.html:27
+msgid "Günlüğe Ekle"
+msgstr ""
+
+#: app/templates/index.html:33
+msgid "Son Dalış Keşifleri"
+msgstr ""
+
+#: app/templates/index.html:46
+msgid "Dalgıç:"
+msgstr ""
+
+#: app/templates/index.html:56
+msgid "Daha Yeni Dalışlar"
+msgstr ""
+
+#: app/templates/index.html:62
+msgid "Eski Dalışlar"
+msgstr ""
+
+#: app/templates/login.html:12
+msgid "Yeni Kullanıcı mısınız?"
+msgstr ""
+
+#: app/templates/login.html:12
+msgid "Kayıt Olmak İçin Tıklayın!"
+msgstr ""
+
+#: app/templates/login.html:13
+msgid "Şifrenizi mi unuttunuz?"
+msgstr ""
+
+#: app/templates/reset_password_request.html:5
+msgid "Şifre Sıfırlama İsteği"
+msgstr ""
+
+#: app/templates/user.html:8
+msgid "Kullanıcı:"
+msgstr ""
+
+#: app/templates/user.html:10
+msgid "Son görülme:"
+msgstr ""
+
+#: app/templates/email/reset_password.html:1
+msgid "Sayın"
+msgstr ""
+
+#: app/templates/email/reset_password.html:2
+msgid "Şifrenizi sıfırlamak için"
+msgstr ""
+
+#: app/templates/email/reset_password.html:2
+msgid "buraya tıklayın"
+msgstr ""
+
+#: app/templates/email/reset_password.html:3
+msgid ""
+"Alternatif olarak bağlantıyı tarayıcınızın adres çubuğuna "
+"yapıştırabilirsiniz:"
+msgstr ""
+
+#: app/templates/email/reset_password.html:5
+msgid "Eğer bu isteği siz yapmadıysanız, lütfen bu e-postayı görmezden gelin."
+msgstr ""
+
+#: app/templates/email/reset_password.html:6
+msgid "Sevgiler,"
+msgstr ""
+
+#: app/templates/email/reset_password.html:6
+msgid "Deep Blue Ekibi"
+msgstr ""
+

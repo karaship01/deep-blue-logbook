@@ -10,7 +10,7 @@
                 {{ post.author.username }}
             </a> 
             <span class="text-muted">
-                {{ moment(post.timestamp).fromNow() }} dedi ki:
+                {{ moment(post.timestamp).fromNow() }} {{ _('dedi ki:') }}
             </span>
             <br>
             {{ post.body }}

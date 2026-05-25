@@ -1,19 +1,31 @@
+from flask import Flask, request
 from flask_bootstrap import Bootstrap5
-from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_moment import Moment
+from flask_babel import Babel
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# --- Eklentilerin Başlatılması ---
 bootstrap = Bootstrap5(app)
-from flask_moment import Moment
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 login = LoginManager(app)
 login.login_view = 'login'
 login.login_message = 'Bu sayfayı görmek için lütfen giriş yapın.'
+
 moment = Moment(app)
 
+# --- Babel (Çoklu Dil) Konfigürasyonu ---
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+babel = Babel(app, locale_selector=get_locale)
+
+# Rotalar en altta olmalı (Döngüsel içe aktarmayı önlemek için)
 from app import routes, models

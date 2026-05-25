@@ -6,5 +6,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     
-    # EKSİK OLAN SATIR BURASI: Bir sayfada kaç proje görünecek?
+    # Bir sayfada kaç proje görünecek?
     PROJECTS_PER_PAGE = 3
+    
+    # Desteklenen diller (İngilizce ve Türkçe)
+    LANGUAGES = ['en', 'tr']

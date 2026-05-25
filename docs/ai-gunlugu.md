@@ -81,3 +81,9 @@ Ajan, `bootstrap-flask` paketini kurarak `base.html` dosyasını modern bir navi
 
 ### Bu Oturumdan Öğrendiğim
 Terminalde `(venv)` yazsa bile Windows'un bazen ana Python ortamına kaçabildiğini ve komutları doğrudan yol belirterek çalıştırmanın en güvenli yöntem olduğunu öğrendim. Ayrıca Bootstrap makrolarının (`render_form`) frontend geliştirme sürecini ne kadar hızlandırdığını deneyimledim.
+------------------------------------------------------------------------------------------------------------------------------------------------
+### 25 Mayıs 2026 - Gece Mesaisi (Bölüm 13)
+- **Flask-Babel Kurulumu:** Projeye çoklu dil desteği kazandırmak için altyapı kuruldu.
+- **Metin İşaretleme (Translation Markers):** Tüm rotalar (`routes.py`), formlar (`forms.py`) ve HTML şablonlarındaki (`index.html`, `base.html` vb.) Türkçe metinler Jinja ve Babel standartlarına göre işaretlendi.
+- **Çeviri Sözlüğü (Extract & Init):** İşaretlenen kelimeler `babel.cfg` aracılığıyla `messages.pot` şablonuna çekildi ve İngilizce (`en`) dil paketi başlatıldı.
+- **Derleme (Compile):** İngilizce çeviriler yazılarak `.po` ve `.mo` dosyaları oluşturuldu, sistem başarılı bir şekilde çift dilli (Tr-En) hale getirildi.

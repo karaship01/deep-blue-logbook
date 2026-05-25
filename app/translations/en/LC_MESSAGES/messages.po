@@ -1,0 +1,269 @@
+# English translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-05-25 23:37+0300\n"
+"PO-Revision-Date: 2026-05-25 23:40+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: app/forms.py:10 app/forms.py:16 app/forms.py:33
+msgid "Kullanıcı Adı"
+msgstr "Username"
+
+#: app/forms.py:11 app/forms.py:18
+msgid "Şifre"
+msgstr "Password"
+
+#: app/forms.py:12
+msgid "Beni Hatırla"
+msgstr "Remember Me"
+
+#: app/forms.py:13 app/routes.py:56 app/templates/base.html:29
+#: app/templates/login.html:5
+msgid "Giriş Yap"
+msgstr "Sign In"
+
+#: app/forms.py:17
+msgid "Email"
+msgstr "Email"
+
+#: app/forms.py:19
+msgid "Şifreyi Onayla"
+msgstr "Confirm Password"
+
+#: app/forms.py:20 app/routes.py:75 app/templates/base.html:32
+#: app/templates/register.html:5
+msgid "Kayıt Ol"
+msgstr "Sign Up"
+
+#: app/forms.py:25 app/forms.py:45
+msgid "Lütfen farklı bir kullanıcı adı seçin."
+msgstr "Please choose a different username."
+
+#: app/forms.py:30
+msgid "Lütfen farklı bir email adresi kullanın."
+msgstr "Please use a different email address."
+
+#: app/forms.py:34
+msgid "Hakkımda"
+msgstr "About Me"
+
+#: app/forms.py:35
+msgid "Kaydet"
+msgstr "Save"
+
+#: app/forms.py:48
+msgid "Proje Başlığı"
+msgstr "Dive Site / Subject"
+
+#: app/forms.py:49
+msgid "Proje Detayları"
+msgstr "Experience Details"
+
+#: app/forms.py:50
+msgid "Kullanılan Teknolojiler"
+msgstr "Dive Level / Equipment"
+
+#: app/forms.py:51
+msgid "Projeyi Ekle"
+msgstr "Add to Logbook"
+
+#: app/forms.py:54
+msgid "E-posta"
+msgstr "Email"
+
+#: app/forms.py:55
+msgid "Şifre Sıfırlama İste"
+msgstr "Request Password Reset"
+
+#: app/forms.py:58
+msgid "Yeni Şifre"
+msgstr "New Password"
+
+#: app/forms.py:59
+msgid "Yeni Şifreyi Tekrar Girin"
+msgstr "Repeat New Password"
+
+#: app/forms.py:60
+msgid "Şifre Sıfırla"
+msgstr "Reset Password"
+
+#: app/routes.py:28
+msgid "Harika! Yeni proje başarıyla eklendi."
+msgstr "Great! New dive log added successfully."
+
+#: app/routes.py:39 app/templates/base.html:23
+msgid "Ana Sayfa"
+msgstr "Home"
+
+#: app/routes.py:49
+msgid "Geçersiz kullanıcı adı veya şifre"
+msgstr "Invalid username or password"
+
+#: app/routes.py:73
+msgid "Kayıt başarılı!"
+msgstr "Registration successful!"
+
+#: app/routes.py:82
+msgid "Kullanıcı bulunamadı."
+msgstr "User not found."
+
+#: app/routes.py:96
+msgid "Profil güncellendi."
+msgstr "Profile updated."
+
+#: app/routes.py:101 app/templates/user.html:12
+msgid "Profili Düzenle"
+msgstr "Edit Profile"
+
+#: app/routes.py:109
+msgid "Şifre sıfırlama talimatları e-posta adresinize gönderildi."
+msgstr "Password reset instructions have been sent to your email address."
+
+#: app/routes.py:111 app/templates/login.html:13
+msgid "Şifreyi Sıfırla"
+msgstr "Reset Password"
+
+#: app/routes.py:119
+msgid "Şifreniz başarıyla değiştirildi."
+msgstr "Your password has been successfully changed."
+
+#: app/templates/_post.html:13
+msgid "dedi ki:"
+msgstr "said:"
+
+#: app/templates/base.html:9
+msgid "Deep Blue Dalış Günlüğü"
+msgstr "Deep Blue Dive Logbook"
+
+#: app/templates/base.html:36
+msgid "Profil"
+msgstr "Profile"
+
+#: app/templates/base.html:39
+msgid "Çıkış Yap"
+msgstr "Sign Out"
+
+#: app/templates/edit_profile.html:5
+msgid "Profilinizi Düzenleyin"
+msgstr "Edit Your Profile"
+
+#: app/templates/index.html:5
+msgid "Derinliklere Hoş Geldiniz"
+msgstr "Welcome to the Depths"
+
+#: app/templates/index.html:6
+msgid "Keşfedilen muazzam dalış noktalarını, su altı canlılarını ve deniz altı maceralarımızı burada günlüklüyoruz."
+msgstr "We log explored magnificent dive sites, underwater creatures, and submarine adventures here."
+
+#: app/templates/index.html:11
+msgid "Yeni Dalış Günlüğü Ekle"
+msgstr "Add New Dive Log"
+
+#: app/templates/index.html:16
+msgid "Dalış Noktası / Konu"
+msgstr "Dive Site / Subject"
+
+#: app/templates/index.html:17
+msgid "Örn: Kaş Kanyon Dalışı, Resif Keşfi"
+msgstr "e.g., Kas Canyon Dive, Reef Exploration"
+
+#: app/templates/index.html:20
+msgid "Deneyim Detayları"
+msgstr "Experience Details"
+
+#: app/templates/index.html:21
+msgid "Su altı nasıldı? Hangi balıkları veya mercanları gördünüz?"
+msgstr "How was the underwater? What fish or corals did you see?"
+
+#: app/templates/index.html:24
+msgid "Dalış Seviyesi / Ekipmanlar"
+msgstr "Dive Level / Equipment"
+
+#: app/templates/index.html:25
+msgid "Örn: Advanced Open Water, 30 Metre, Nitrox"
+msgstr "e.g., Advanced Open Water, 30 Meters, Nitrox"
+
+#: app/templates/index.html:27
+msgid "Günlüğe Ekle"
+msgstr "Add to Logbook"
+
+#: app/templates/index.html:33
+msgid "Son Dalış Keşifleri"
+msgstr "Latest Dive Explorations"
+
+#: app/templates/index.html:46
+msgid "Dalgıç:"
+msgstr "Diver:"
+
+#: app/templates/index.html:56
+msgid "Daha Yeni Dalışlar"
+msgstr "Newer Dives"
+
+#: app/templates/index.html:62
+msgid "Eski Dalışlar"
+msgstr "Older Dives"
+
+#: app/templates/login.html:12
+msgid "Yeni Kullanıcı mısınız?"
+msgstr "New User?"
+
+#: app/templates/login.html:12
+msgid "Kayıt Olmak İçin Tıklayın!"
+msgstr "Click to Register!"
+
+#: app/templates/login.html:13
+msgid "Şifrenizi mi unuttunuz?"
+msgstr "Forgot your password?"
+
+#: app/templates/reset_password_request.html:5
+msgid "Şifre Sıfırlama İsteği"
+msgstr "Password Reset Request"
+
+#: app/templates/user.html:8
+msgid "Kullanıcı:"
+msgstr "User:"
+
+#: app/templates/user.html:10
+msgid "Son görülme:"
+msgstr "Last seen:"
+
+#: app/templates/email/reset_password.html:1
+msgid "Sayın"
+msgstr "Dear"
+
+#: app/templates/email/reset_password.html:2
+msgid "Şifrenizi sıfırlamak için"
+msgstr "To reset your password"
+
+#: app/templates/email/reset_password.html:2
+msgid "buraya tıklayın"
+msgstr "click here"
+
+#: app/templates/email/reset_password.html:3
+msgid "Alternatif olarak bağlantıyı tarayıcınızın adres çubuğuna yapıştırabilirsiniz:"
+msgstr "Alternatively, you can paste the following link in your browser's address bar:"
+
+#: app/templates/email/reset_password.html:5
+msgid "Eğer bu isteği siz yapmadıysanız, lütfen bu e-postayı görmezden gelin."
+msgstr "If you have not requested a password reset simply ignore this message."
+
+#: app/templates/email/reset_password.html:6
+msgid "Sevgiler,"
+msgstr "Sincerely,"
+
+#: app/templates/email/reset_password.html:6
+msgid "Deep Blue Ekibi"
+msgstr "The Deep Blue Team"

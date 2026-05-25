@@ -2,13 +2,13 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-    <h1>Giriş Yap</h1>
+    <h1>{{ _('Giriş Yap') }}</h1>
     <div class="row">
         <div class="col-md-4">
             {{ render_form(form) }}
         </div>
     </div>
     <br>
-    <p>Yeni Kullanıcı mısınız? <a href="{{ url_for('register') }}">Kayıt Olmak İçin Tıklayın!</a></p>
-    <p>Şifrenizi mi unuttunuz? <a href="{{ url_for('reset_password_request') }}">Şifreyi Sıfırla</a></p>
+    <p>{{ _('Yeni Kullanıcı mısınız?') }} <a href="{{ url_for('register') }}">{{ _('Kayıt Olmak İçin Tıklayın!') }}</a></p>
+    <p>{{ _('Şifrenizi mi unuttunuz?') }} <a href="{{ url_for('reset_password_request') }}">{{ _('Şifreyi Sıfırla') }}</a></p>
 {% endblock %}
