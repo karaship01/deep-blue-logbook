@@ -87,3 +87,39 @@ Terminalde `(venv)` yazsa bile Windows'un bazen ana Python ortamına kaçabildi�
 - **Metin İşaretleme (Translation Markers):** Tüm rotalar (`routes.py`), formlar (`forms.py`) ve HTML şablonlarındaki (`index.html`, `base.html` vb.) Türkçe metinler Jinja ve Babel standartlarına göre işaretlendi.
 - **Çeviri Sözlüğü (Extract & Init):** İşaretlenen kelimeler `babel.cfg` aracılığıyla `messages.pot` şablonuna çekildi ve İngilizce (`en`) dil paketi başlatıldı.
 - **Derleme (Compile):** İngilizce çeviriler yazılarak `.po` ve `.mo` dosyaları oluşturuldu, sistem başarılı bir şekilde çift dilli (Tr-En) hale getirildi.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+## Oturum 4: 26 Mayıs 2026 23:00-00:00
+### Hedef
+Projeye çoklu dil desteği (I18n) kazandırmak ve Türkçe olan projeyi Flask-Babel kullanarak İngilizce'ye çevrilebilir hale getirmek.
+
+### Kullandığım Mod ve Model
+Mod: Plan / Fast (Ajan destekli manuel kodlama)
+Model: Gemini
+Görünüm: Editor
+
+### Verdiğim Promptlar
+1. "Flask-Babel kurdum, formlar ve HTML dosyalarındaki metinleri nasıl işaretlemem (mark) gerekiyor?"
+2. "Babel.cfg dosyasını ayarladım. Projedeki kelimeleri extract edip İngilizce dil dosyalarını başlatmak için komutlar nelerdir?"
+
+### Ajanın Önerdiği Plan
+Ajan, Babel entegrasyonu için 3 adımlı bir plan sundu:
+1. Python (`routes.py`, `forms.py`) ve HTML şablonlarındaki metinlerin `_()` ve `_l()` ile işaretlenmesi.
+2. `babel.cfg` ile yapılandırma sağlanıp `pybabel extract` ve `init` komutlarıyla `messages.po` sözlüğünün oluşturulması.
+3. Çevirilerin manuel girilip `pybabel compile` ile makine diline derlenmesi.
+
+### Plan'da Sorguladıklarım
+Formlardaki çevirilerde neden normal `_()` yerine `_l()` (lazy_gettext) kullandığımızı sorguladım. Ajan, formların uygulama ilk kalktığında (henüz dil belli olmadan) hafızaya alındığı için tembel çeviriye ihtiyaç duyduğunu açıkladı.
+
+### Üretilen Kodda Düzelttiklerim
+- `app/routes.py` içindeki tüm sayfa başlıkları (title) ve flash mesajları Babel'e uygun şekilde modifiye edildi.
+- Özel tasarım olan "Cam Efektli" (glass-panel) div yapısının bozulmaması için HTML içi çeviriler manuel gözetimle yerleştirildi.
+
+### Karşılaştığım Hatalar ve Çözümler
+- Hata: `git add .` komutu sırasında terminalde "warning: LF will be replaced by CRLF" uyarısı alındı.
+- Çözüm: Ajan ile durum değerlendirildi; bunun Windows/Linux satır sonu farklılığından kaynaklı zararsız bir Git uyarısı olduğu anlaşıldı ve commit işlemine devam edildi.
+
+### Bu Oturumdan Öğrendiğim
+Çoklu dil desteğinde her kelimenin sadece çevrilmesinin yetmediğini; metinlerin ne zaman (boot anında mı, istek anında mı) çevrileceğini yönetmenin (lazy translation) Flask mimarisinde kritik olduğunu öğrendim.
+
+### Sonraki Oturum İçin Notlar
+Projenin zorunlu isterlerinden olan "Application factory pattern + blueprint" (Bölüm 15) için klasörleri yeniden yapılandırma çalışmalarına geçilecek.
