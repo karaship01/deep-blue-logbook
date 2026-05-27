@@ -44,7 +44,7 @@ Görünüm: Editor (Kod entegrasyonu ve hata kontrolü için).
 Ajan, şifre sıfırlama işlemi için JWT (JSON Web Token) kullanarak süreli ve güvenli bir link oluşturmayı önerdi. `Flask-Mail` ile e-postanın arka planda (asenkron) gönderilmesi için `threading` modülünü kullandık. Blueprint mimarisine henüz geçmediğimiz için, ajan kodları doğrudan mevcut monolitik yapımıza (`routes.py` ve `forms.py`) uyarlamamı sağladı.
 
 ### Üretilen Kodda Düzelttiklerim
-- Mega-Tutorial notlarında şablonlar içindeki `url_for('auth.reset_password')` kısımları, projemizde henüz Blueprint olmadığı için hata verecekti. Ajanın uyarısıyla bu kısımları doğrudan `url_for('reset_password')` olarak güncelledim.
+- Mega-Tutorial notlarında şablonlar içindeki `url_for('auth.reset_password')` kısımları, projemizde henüz Blueprint olmadığı için hata verecekti. Ajanın uyarısıyla bu kısımları doğrudan `url_for('auth.reset_password')` olarak güncelledim.
 
 ### Karşılaştığım Hatalar ve Çözümler
 - Ajanın ilk verdiği talimatlarda e-posta şablon dosyalarını (`email.py` ve template'ler) yaratma adımını atladığını fark ettim. Ajana durumu bildirip eksik dosyaların sıfırdan oluşturulmasını sağladım. Editördeki Türkçe karakter uyarılarının (yazım denetimi) kod hatası olmadığını ajandan teyit edip sürece devam ettim.
@@ -87,7 +87,7 @@ Terminalde `(venv)` yazsa bile Windows'un bazen ana Python ortamına kaçabildi�
 - **Metin İşaretleme (Translation Markers):** Tüm rotalar (`routes.py`), formlar (`forms.py`) ve HTML şablonlarındaki (`index.html`, `base.html` vb.) Türkçe metinler Jinja ve Babel standartlarına göre işaretlendi.
 - **Çeviri Sözlüğü (Extract & Init):** İşaretlenen kelimeler `babel.cfg` aracılığıyla `messages.pot` şablonuna çekildi ve İngilizce (`en`) dil paketi başlatıldı.
 - **Derleme (Compile):** İngilizce çeviriler yazılarak `.po` ve `.mo` dosyaları oluşturuldu, sistem başarılı bir şekilde çift dilli (Tr-En) hale getirildi.
--------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Oturum 4: 26 Mayıs 2026 23:00-00:00
 ### Hedef
 Projeye çoklu dil desteği (I18n) kazandırmak ve Türkçe olan projeyi Flask-Babel kullanarak İngilizce'ye çevrilebilir hale getirmek.
@@ -123,3 +123,40 @@ Formlardaki çevirilerde neden normal `_()` yerine `_l()` (lazy_gettext) kulland
 
 ### Sonraki Oturum İçin Notlar
 Projenin zorunlu isterlerinden olan "Application factory pattern + blueprint" (Bölüm 15) için klasörleri yeniden yapılandırma çalışmalarına geçilecek.
+------------------------------------------------------------------------------------------------------------------------------------------
+## Oturum 6 - 27 Mayıs 2026
+
+### Hedef
+Uygulamayı tek bir `app` nesnesinden kurtarıp "Application Factory" ve "Blueprint" mimarisine (Bölüm 15) geçirmek. Ayrıca hocanın "En az 3 veritabanı modeli" zorunluluğunu karşılamak için projeye `Comment` (Yorum) modelini eklemek.
+
+### Kullandığım Mod ve Model
+Mod: Plan / Fast (Kapsamlı mimari dönüşüm)
+Model: Gemini 3 Pro
+Görünüm: Manager ve Editor
+
+### Verdiğim Promptlar
+1. "Mevcut projeyi `auth`, `main` ve `errors` blueprint'lerine nasıl bölerim?"
+2. "Blueprint mimarisine geçerken `models.py` dosyasında aldığım 'Circular Import' (Döngüsel İçe Aktarma) hatasını nasıl çözerim?"
+
+### Ajanın Önerdiği Plan
+1. `app` klasörü altında alt modüller (`auth`, `main`, `errors`) oluşturulması ve içlerine `__init__.py` eklenmesi.
+2. `routes.py` ve `forms.py` içeriklerinin mantıksal olarak bu modüllere dağıtılması.
+3. 3. zorunlu model olarak `Comment` (Yorum) sınıfının eklenip veritabanının güncellenmesi.
+
+### Plan'da Sorguladıklarım
+Form dosyalarını (`forms.py`) blueprint'lere ayırırken ajanın sıfırdan kod yazması yerine, daha önce büyük emekle hazırladığım Babel (`_l`) çeviri etiketlerinin kaybolmaması için kendi mevcut dosyamı ajana bölüp düzelttirdim.
+
+### Üretilen Kodda Düzelttiklerim
+Blueprint'e geçiş sonrası HTML şablonlarındaki eski `url_for('index')` gibi rotaların çökeceğini biliyordum. VS Code'un "Toplu Bul ve Değiştir" (Search and Replace) özelliğini kullanarak tüm HTML dosyalarındaki rotaları `url_for('main.index')`, `url_for('auth.login')` şeklinde manuel bir müdahaleyle güncelledim.
+
+### Karşılaştığım Hatalar ve Çözümler
+- **Hata 1 (Circular Import):** Sunucuyu başlatırken `models.py` içinde `ImportError: cannot import name 'app'` hatası aldım. 
+  - **Çözüm:** Ajanla birlikte eski global `app` nesnesini sildiğimizi tespit ettik. Import kısmını `from flask import current_app` olarak değiştirerek sorunu çözdüm.
+- **Hata 2 (Modül Bulunamadı):** Terminalde migrasyon yaparken `ModuleNotFoundError: No module named 'flask_sqlalchemy'` hatası verdi.
+  - **Çözüm:** Windows'un sanal ortam (`venv`) yerine genel Python'a gitmeye çalıştığını fark ettim. Komutların başına `.\venv\Scripts\python -m` ekleyerek sistemi sanal ortama kilitledim ve veritabanı güncellemesini başarıyla tamamladım.
+
+### Bu Oturumdan Öğrendiğim
+Gelişmiş Flask uygulamalarında "Döngüsel İçe Aktarma" riskinden kaçınmak için Application Factory (`create_app`) yapısının ne kadar hayati olduğunu deneyimledim. Ayrıca Windows terminalinin sanal ortam yönetimindeki kaprislerini aşmayı öğrendim.
+
+### Sonraki Oturum İçin Notlar
+Projenin son zorunlu teknik gereksinimi olan Dockerize (Bölüm 17) işlemlerine geçilecek ve hocanın istediği 7. (Son) Oturum tamamlanacak.

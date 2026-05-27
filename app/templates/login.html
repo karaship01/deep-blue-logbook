@@ -9,6 +9,6 @@
         </div>
     </div>
     <br>
-    <p>{{ _('Yeni Kullanıcı mısınız?') }} <a href="{{ url_for('register') }}">{{ _('Kayıt Olmak İçin Tıklayın!') }}</a></p>
-    <p>{{ _('Şifrenizi mi unuttunuz?') }} <a href="{{ url_for('reset_password_request') }}">{{ _('Şifreyi Sıfırla') }}</a></p>
+    <p>{{ _('Yeni Kullanıcı mısınız?') }} <a href="{{ url_for('auth.register') }}">{{ _('Kayıt Olmak İçin Tıklayın!') }}</a></p>
+    <p>{{ _('Şifrenizi mi unuttunuz?') }} <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Şifreyi Sıfırla') }}</a></p>
 {% endblock %}

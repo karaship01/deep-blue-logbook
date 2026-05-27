@@ -1,8 +1,8 @@
 from time import time
 import jwt
-from app import app
 from datetime import datetime, timezone
 from typing import Optional
+from flask import current_app
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from hashlib import md5
@@ -28,15 +28,18 @@ class User(UserMixin, db.Model):
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
+        
     def get_reset_password_token(self, expires_in=600):
+        # app.config yerine current_app.config kullanıldı (Circular Import Çözümü)
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256')
+            current_app.config['SECRET_KEY'], algorithm='HS256')
 
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
+            # app.config yerine current_app.config kullanıldı
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
         except:
             return
@@ -45,6 +48,7 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
+
 
 class Project(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -55,3 +59,16 @@ class Project(db.Model):
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
 
     author: so.Mapped[User] = so.relationship(back_populates='projects')
+    
+    # Yeni eklenen Comment modeli ile olan ilişki (One-to-Many)
+    comments: so.WriteOnlyMapped['Comment'] = so.relationship(back_populates='project')
+
+
+# --- HOCANIN ZORUNLU TUTTUĞU 3. MODEL EKLENDİ ---
+class Comment(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+    project_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Project.id), index=True)
+
+    project: so.Mapped[Project] = so.relationship(back_populates='comments')
