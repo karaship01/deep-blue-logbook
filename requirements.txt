@@ -9,3 +9,5 @@ flask-mail
 bootstrap-flask
 flask-moment
 flask-babel
+gunicorn
+psycopg2-binary

@@ -160,3 +160,34 @@ Gelişmiş Flask uygulamalarında "Döngüsel İçe Aktarma" riskinden kaçınma
 
 ### Sonraki Oturum İçin Notlar
 Projenin son zorunlu teknik gereksinimi olan Dockerize (Bölüm 17) işlemlerine geçilecek ve hocanın istediği 7. (Son) Oturum tamamlanacak.
+------------------------------------------------------------------------------------------------------------------------------------------## Oturum 7 - 28 Mayıs 2026
+
+### Hedef
+Projenin son zorunlu teknik gereksinimi olan "Dağıtım ve Docker" (Bölüm 17) aşamasını tamamlamak. Uygulamayı her ortamda çalışabilmesi için `python:3.12-slim` imajı ile konteynerize etmek ve PostgreSQL veritabanı ile bağlamak.
+
+### Kullandığım Mod ve Model
+Mod: Plan / Fast
+Model: Gemini 3 Pro
+
+### Verdiğim Promptlar
+1. "Önümüzdeki bölüm ne yapacağımızı açıkla."
+2. "Hadi şu Docker işini de bitirelim. Dockerfile ve docker-compose nasıl oluşturulur?"
+
+### Ajanın Önerdiği Plan
+1. Canlı sunucu ortamı için `gunicorn` ve veritabanı bağlantısı için `psycopg2-binary` paketlerinin `requirements.txt` dosyasına eklenmesi.
+2. Gereksiz dosyaların konteynere girmesini engellemek için `.dockerignore` oluşturulması.
+3. Uygulamanın işletim sistemini, portunu ve çalışma mantığını belirten `Dockerfile` yazılması.
+4. Web uygulaması ile PostgreSQL veritabanını aynı ağda birleştiren `docker-compose.yml` dosyasının yazılması.
+
+### Plan'da Sorguladıklarım
+Ajan dosyaları oluşturmamı söylediğinde, bunların klasör (folder) mü yoksa uzantısız dosya (file) mı olması gerektiğini teyit ettim. Hepsinin dosya olması gerektiği netleşti.
+
+### Üretilen Kodda Düzelttiklerim / Karşılaştığım Hatalar
+- **Hata 1:** Ajanın requirements'a eklememi söylediği `gunicorn` ve `psycopg2-binary` kelimelerini yanlışlıkla terminalde komut olarak çalıştırmaya kalktım. Windows terminali doğal olarak `gunicorn is not recognized` hatası verdi.
+- **Çözüm:** Ajanın uyarısıyla bunların çalıştırılacak komutlar değil, `requirements.txt` içine eklenecek Python paket isimleri olduğunu fark edip dosyaya kaydettim. `gunicorn`'un zaten Windows için değil, Linux tabanlı Docker konteynerimiz için gerekli olduğunu anladım.
+
+### Bu Oturumdan Öğrendiğim
+Uygulamaların sadece "kendi bilgisayarımda" çalışmasının yetmediğini; `Dockerfile` ve `docker-compose` sayesinde uygulamanın tüm işletim sistemi, kütüphaneler ve veritabanı ayarlarıyla birlikte her ortamda kusursuzca ayağa kaldırılabileceğini deneyimledim. 
+
+### Sonuç
+Hocanın projedeki tüm zorunlu kodlama maddeleri, 7 AI Oturumu ve veritabanı gereksinimleri başarıyla tamamlandı.

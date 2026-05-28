@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://deepblue_user:secretpass@db:5432/deepblue_db
+      - SECRET_KEY=cok-gizli-production-anahtari
+      - FLASK_APP=microblog.py
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=deepblue_user
+      - POSTGRES_PASSWORD=secretpass
+      - POSTGRES_DB=deepblue_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
