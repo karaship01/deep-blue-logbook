@@ -9,8 +9,21 @@
     <title>{{ _('Deep Blue Dalış Günlüğü') }}</title>
     {% endif %}
     {{ bootstrap.load_css() }}
+    
+    <style>
+      body {
+        /* Senin belirlediğin %20 saydamlık oranı (0.20) korundu, okyanus artık çok net! */
+        background-image: linear-gradient(rgba(248, 249, 250, 0.20), rgba(248, 249, 250, 0.20)), 
+                          url('https://images.unsplash.com/photo-1582967788606-a171c1080cb0?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; 
+        background-repeat: no-repeat;
+      }
+    </style>
   </head>
-  <body class="bg-light d-flex flex-column min-vh-100">
+  
+  <body class="d-flex flex-column min-vh-100">
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top mb-4">
       <div class="container">
@@ -19,11 +32,18 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.index') }}">{{ _('Ana Sayfa') }}</a>
             </li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <a class="btn btn-outline-light text-white fw-bold rounded-pill px-3 py-1 shadow-sm" href="#" data-bs-toggle="modal" data-bs-target="#mapModal" style="background-color: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5);">
+                📍 {{ _('Keşif Haritası') }}
+              </a>
+            </li>
           </ul>
+
           <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
             {% if current_user.is_anonymous %}
             <li class="nav-item">
@@ -67,12 +87,38 @@
       {% block content %}{% endblock %}
     </div>
 
-    <footer class="bg-white text-center text-muted py-4 mt-5 border-top shadow-sm">
+    <footer class="text-center text-muted py-4 mt-5 border-top shadow-sm" style="background-color: rgba(255, 255, 255, 0.85);">
       <div class="container">
         <small>&copy; 2026 Deep Blue - İnternet Programcılığı Dönem Projesi</small>
       </div>
     </footer>
 
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);">
+          <div class="modal-header border-bottom-0 pb-0">
+            <h5 class="modal-title fw-bold text-dark" id="mapModalLabel">📍 {{ _('Türkiye Dalış Noktaları Haritası') }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm" style="border: 3px solid rgba(255,255,255,0.5);">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102319.46786847846!2d29.56012675971488!3d36.199732734195156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c1a5b810484555%3A0xc61099f66d4838b9!2sKa%C5%9F%2C%20Antalya!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <p class="text-dark mt-3 mb-0 text-center fw-medium">
+              {{ _('Türkiye\'nin dalış başkenti Kaş ve çevresindeki popüler noktaları inceleyin. Yakınlaştırmak veya uzaklaştırmak için haritayı kullanabilirsiniz.') }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     {{ bootstrap.load_js() }}
     {{ moment.include_moment() }}
     {{ moment.locale('tr') }}

@@ -2,13 +2,30 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-    <h1>{{ _('Giriş Yap') }}</h1>
-    <div class="row">
-        <div class="col-md-4">
-            {{ render_form(form) }}
+<div class="row justify-content-center mt-5">
+    <div class="col-12 col-md-8 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-3" style="background-color: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px);">
+            <div class="card-body p-4 p-sm-5">
+                
+                <h3 class="card-title text-center fw-bold mb-4 text-dark">{{ _('Giriş Yap') }}</h3>
+                
+                {{ render_form(form) }}
+                
+                <hr class="my-4" style="border-color: rgba(0,0,0,0.2);">
+                
+                <div class="text-center small">
+                    <p class="mb-2 text-dark fw-medium">
+                        {{ _('Yeni Kullanıcı mısınız?') }} 
+                        <a href="{{ url_for('auth.register') }}" class="text-primary text-decoration-none fw-bold">{{ _('Kayıt Olun') }}</a>
+                    </p>
+                    <p class="mb-0 text-dark fw-medium">
+                        {{ _('Şifrenizi mi unuttunuz?') }} 
+                        <a href="{{ url_for('auth.reset_password_request') }}" class="text-primary text-decoration-none fw-bold">{{ _('Şifreyi Sıfırla') }}</a>
+                    </p>
+                </div>
+
+            </div>
         </div>
     </div>
-    <br>
-    <p>{{ _('Yeni Kullanıcı mısınız?') }} <a href="{{ url_for('auth.register') }}">{{ _('Kayıt Olmak İçin Tıklayın!') }}</a></p>
-    <p>{{ _('Şifrenizi mi unuttunuz?') }} <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Şifreyi Sıfırla') }}</a></p>
+</div>
 {% endblock %}

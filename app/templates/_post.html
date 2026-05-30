@@ -1,19 +1,31 @@
-<table class="table table-hover mb-3">
-    <tr>
-        <td width="70px">
-            <a href="{{ url_for('main.user', username=post.author.username) }}">
-                <img src="{{ post.author.avatar(70) }}" />
+<div class="card shadow-sm border-0 rounded-3 mb-4">
+    <div class="card-body p-4">
+        <div class="d-flex align-items-center mb-3">
+            <a href="{{ url_for('main.user', username=post.author.username) }}" class="text-decoration-none">
+                <img src="{{ post.author.avatar(40) }}" class="rounded-circle shadow-sm me-3" alt="Avatar">
             </a>
-        </td>
-        <td>
-            <a href="{{ url_for('main.user', username=post.author.username) }}">
-                {{ post.author.username }}
-            </a> 
-            <span class="text-muted">
-                {{ moment(post.timestamp).fromNow() }} {{ _('dedi ki:') }}
-            </span>
-            <br>
-            {{ post.body }}
-        </td>
-    </tr>
-</table>
+            <div>
+                <h6 class="mb-0 fw-bold">
+                    <a href="{{ url_for('main.user', username=post.author.username) }}" class="text-dark text-decoration-none">
+                        {{ post.author.username }}
+                    </a>
+                </h6>
+                <small class="text-muted">{{ moment(post.timestamp).fromNow() }}</small>
+            </div>
+        </div>
+        
+        {% if post.title %}
+            <h5 class="card-title fw-bold text-primary mb-2">📍 {{ post.title }}</h5>
+        {% endif %}
+        
+        <p class="card-text text-muted" style="font-size: 0.95rem;">{{ post.body }}</p>
+    </div>
+    
+    {% if post.technologies %}
+    <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+        <span class="badge bg-info text-dark rounded-pill px-3 py-2 fw-semibold shadow-sm">
+            {{ post.technologies }}
+        </span>
+    </div>
+    {% endif %}
+</div>

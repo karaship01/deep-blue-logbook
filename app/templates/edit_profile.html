@@ -2,10 +2,24 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-    <h1>{{ _('Profilinizi Düzenleyin') }}</h1>
-    <div class="row">
-        <div class="col-md-4">
-            {{ render_form(form) }}
+<div class="row justify-content-center mt-5 mb-5">
+    <div class="col-12 col-md-8 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-3" style="background-color: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px);">
+            <div class="card-body p-4 p-sm-5">
+                
+                <h3 class="card-title text-center fw-bold mb-4 text-dark">✏️ {{ _('Profilinizi Düzenleyin') }}</h3>
+                
+                {{ render_form(form) }}
+                
+                <hr class="my-4" style="border-color: rgba(0,0,0,0.2);">
+                <div class="text-center small">
+                    <a href="{{ url_for('main.user', username=current_user.username) }}" class="text-decoration-none fw-bold text-secondary">
+                        &larr; {{ _('Profile Geri Dön') }}
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}

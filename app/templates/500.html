@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <div class="text-center mt-5">
-        <h1 class="display-1 text-warning">500</h1>
-        <h2>Sunucu Hatası</h2>
-        <p class="lead">Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin.</p>
-        <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-3">Ana Sayfaya Dön</a>
+<div class="row justify-content-center mt-5 text-center mb-5">
+    <div class="col-md-8">
+        <h1 class="display-1 fw-bold text-danger mb-0">500</h1>
+        <h2 class="fw-bold mt-3 text-dark">🦈 {{ _('Sistemde Bir Köpekbalığı Saldırısı!') }}</h2>
+        <p class="lead mt-3 text-muted">{{ _('Sunucularımızda beklenmeyen bir hata oluştu. Mühendislerimiz dalış takımlarını giydi, sorunu çözmeye iniyorlar.') }}</p>
+        <a href="{{ url_for('main.index') }}" class="btn btn-outline-danger rounded-pill px-4 mt-4 fw-bold shadow-sm">
+            &larr; {{ _('Güvenli Bölgeye Dön') }}
+        </a>
     </div>
+</div>
 {% endblock %}
