@@ -191,3 +191,28 @@ Uygulamaların sadece "kendi bilgisayarımda" çalışmasının yetmediğini; `D
 
 ### Sonuç
 Hocanın projedeki tüm zorunlu kodlama maddeleri, 7 AI Oturumu ve veritabanı gereksinimleri başarıyla tamamlandı.
+------------------------------------------------------------------------------------------------------------------------------------------
+## Oturum 8 (Bonus) - 31 Mayıs 2026
+
+### Hedef
+Projenin temel kodlaması ve Dockerize işlemleri tamamlandıktan sonra, hocanın rubrikte 5 puan ayırdığı "Sunum (UI/UX)" kriterini en üst düzeye çıkarmak. Arayüzü modern, mobil uyumlu ve profesyonel bir görünüme kavuşturmak.
+
+### Kullandığım Mod ve Model
+Mod: Fast (UI/UX İyileştirmesi)
+Model: Gemini 3 Pro
+
+### Verdiğim Promptlar
+1. "Arayüzü de halledelim emeklerimiz boşa gitmesin. Sana base.html'in hepsini atıyorum."
+2. "Kayıt ol kısmı mouse'u üstüne getirmeden gözükmüyor."
+
+### Ajanın Önerdiği Plan
+1. `base.html` içindeki sönük flash mesajlarının, Bootstrap'in kapatılabilir, renkli (success/danger) `alert` kutularına dönüştürülmesi.
+2. Navbar'a derinlik (shadow) ve sayfayla kayma (sticky-top) özelliği eklenmesi.
+3. Arka planın açık gri yapılarak içeriklerin daha belirgin hale getirilmesi ve kurumsal bir footer (alt bilgi) eklenmesi.
+
+### Karşılaştığım Hatalar ve Çözümler
+- **Hata (Tasarım Çakışması):** Ajanın verdiği ilk kodda "Kayıt Ol" butonu beyaz navbar üzerinde kayboldu ve sadece fareyi üzerine getirince (hover) görünür oldu. 
+- **Çözüm:** Sorunun, butona hem `nav-link` hem de `btn-light` sınıflarının aynı anda verilmesinden kaynaklandığını (Bootstrap sınıf çatışması) tespit ettik. `nav-link` sınıfını silip `align-items-center` ile hizalamayı düzelterek butonun masmavi menü üzerinde bembeyaz ve şık bir şekilde parlamasını sağladık.
+
+### Bu Oturumdan Öğrendiğim
+Backend kodları ne kadar iyi olursa olsun, son kullanıcıya hitap eden UI/UX tasarımının projenin kalitesini belirlediğini gördüm. Ayrıca Bootstrap sınıflarının birbiriyle nasıl çatışabileceğini ve bu tarz CSS hatalarını ayıklamayı deneyimledim.
