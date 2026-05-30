@@ -57,9 +57,10 @@
                 📘 {{ _('Dalış Rehberi') }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0" aria-labelledby="divingGuideDropdown" style="background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);">
+                <li><a class="dropdown-item fw-bold text-info py-2" href="#" data-bs-toggle="modal" data-bs-target="#guideModal">🐟 {{ _('Deniz Canlıları (Wiki)') }}</a></li>
+                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item fw-medium text-dark py-2" href="#" data-bs-toggle="modal" data-bs-target="#guideModal">🤿 {{ _('Ekipman Gereksinimleri') }}</a></li>
                 <li><a class="dropdown-item fw-medium text-dark py-2" href="#" data-bs-toggle="modal" data-bs-target="#guideModal">📚 {{ _('Dalış Kursları') }}</a></li>
-                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item fw-medium text-primary py-2" href="#" data-bs-toggle="modal" data-bs-target="#guideModal">🪪 {{ _('Ehliyetler (PADI / CMAS)') }}</a></li>
               </ul>
             </li>
@@ -128,79 +129,133 @@
     </div>
 
     <div class="modal fade" id="guideModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content border-0 shadow-lg" style="background-color: rgba(255, 255, 255, 0.90); backdrop-filter: blur(15px);">
-          <div class="modal-header border-bottom px-4 pt-4">
-            <h5 class="modal-title fw-bold text-primary">📘 {{ _('Derinlikler Bilgi Bankası') }}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg overflow-hidden" style="background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);">
+          
+          <div class="modal-header bg-primary text-white border-bottom-0 px-4 py-3">
+            <h5 class="modal-title fw-bold">📘 {{ _('Derinlikler Ansiklopedisi & Rehber') }}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body p-4">
-            
-            <ul class="nav nav-pills mb-4 nav-fill" id="pills-tab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active fw-bold rounded-pill" id="pills-ekipman-tab" data-bs-toggle="pill" data-bs-target="#pills-ekipman" type="button" role="tab">🤿 Ekipmanlar</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link fw-bold rounded-pill" id="pills-kurslar-tab" data-bs-toggle="pill" data-bs-target="#pills-kurslar" type="button" role="tab">📚 Kurslar</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link fw-bold rounded-pill" id="pills-ehliyetler-tab" data-bs-toggle="pill" data-bs-target="#pills-ehliyetler" type="button" role="tab">🪪 Ehliyetler</button>
-              </li>
-            </ul>
-
-            <div class="tab-content text-dark" id="pills-tabContent">
+          
+          <div class="modal-body p-0">
+            <div class="row g-0 h-100">
               
-              <div class="tab-pane fade show active" id="pills-ekipman" role="tabpanel">
-                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">Temel Dalış Ekipmanları</h5>
-                <ul class="list-group list-group-flush bg-transparent">
-                  <li class="list-group-item bg-transparent border-0 px-0"><strong>🥽 Maske & Şnorkel:</strong> Su altında net görüş sağlar ve yüzeyde nefes almayı kolaylaştırır.</li>
-                  <li class="list-group-item bg-transparent border-0 px-0"><strong>🦶 Paletler:</strong> Suyun içinde daha az enerji harcayarak güçlü bir şekilde ilerlemenizi sağlar.</li>
-                  <li class="list-group-item bg-transparent border-0 px-0"><strong>🦺 BCD (Denge Yeleği):</strong> Tüpü taşımanızı ve su içindeki kaldırma kuvvetinizi (yüzerliğinizi) ayarlamanızı sağlar.</li>
-                  <li class="list-group-item bg-transparent border-0 px-0"><strong>🎛️ Regülatör:</strong> Tüpteki yüksek basınçlı havayı soluyabileceğiniz basınca indirgeyen hayat kurtarıcı donanımdır.</li>
-                  <li class="list-group-item bg-transparent border-0 px-0"><strong>🧥 Dalış Elbisesi (Wetsuit):</strong> Vücut ısınızı korur ve deniz canlılarından/kayalardan oluşabilecek çiziklere karşı sizi korur.</li>
-                </ul>
-              </div>
-
-              <div class="tab-pane fade" id="pills-kurslar" role="tabpanel">
-                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">Kariyer Yolu ve Eğitimler</h5>
-                <div class="mb-3">
-                  <h6 class="fw-bold text-primary">1. Open Water Diver (Açık Su Dalgıcı)</h6>
-                  <p class="small text-muted mb-1">Başlangıç seviyesidir. Dünyanın her yerinde 18 metreye kadar dalış yapma yetkisi verir.</p>
-                </div>
-                <div class="mb-3">
-                  <h6 class="fw-bold text-primary">2. Advanced Open Water (İleri Seviye)</h6>
-                  <p class="small text-muted mb-1">Gece dalışı, derin dalış (30 metre) ve yön bulma gibi özel becerileri kazandırır.</p>
-                </div>
-                <div class="mb-3">
-                  <h6 class="fw-bold text-primary">3. Rescue Diver (Kurtarma Dalgıcı)</h6>
-                  <p class="small text-muted mb-1">Sualtında oluşabilecek acil durumları önlemeyi ve müdahale etmeyi öğretir. Çok prestijli bir seviyedir.</p>
+              <div class="col-md-3 border-end" style="background-color: rgba(248, 249, 250, 0.7);">
+                <div class="nav flex-column nav-pills p-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link active fw-bold text-start mb-2" id="v-pills-baliklar-tab" data-bs-toggle="pill" data-bs-target="#v-pills-baliklar" type="button" role="tab">🐟 Deniz Canlıları</button>
+                  <button class="nav-link fw-bold text-start mb-2" id="v-pills-ekipman-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ekipman" type="button" role="tab">🤿 Ekipmanlar</button>
+                  <button class="nav-link fw-bold text-start mb-2" id="v-pills-kurslar-tab" data-bs-toggle="pill" data-bs-target="#v-pills-kurslar" type="button" role="tab">📚 Kurslar</button>
+                  <button class="nav-link fw-bold text-start" id="v-pills-ehliyetler-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ehliyetler" type="button" role="tab">🪪 Ehliyetler</button>
                 </div>
               </div>
 
-              <div class="tab-pane fade" id="pills-ehliyetler" role="tabpanel">
-                <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">Uluslararası Sertifikasyon Sistemleri</h5>
-                <p class="small text-muted">Dalış ehliyetleri sürücü belgesi gibidir, bir kere aldığınızda dünyanın her yerinde ömür boyu geçerlidir.</p>
-                <div class="row g-3 mt-2">
-                  <div class="col-md-6">
-                    <div class="card bg-light border-0 shadow-sm h-100 p-3">
-                      <h6 class="fw-bold text-primary text-center">PADI</h6>
-                      <p class="small text-muted mb-0">Dünyanın en yaygın ticari dalış organizasyonudur. Gittiğiniz herhangi bir ülkedeki dalış okullarının %80'i PADI sistemini kullanır.</p>
+              <div class="col-md-9 p-4 p-md-5">
+                <div class="tab-content text-dark" id="v-pills-tabContent">
+                  
+                  <div class="tab-pane fade show active" id="v-pills-baliklar" role="tabpanel">
+                    <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Türkiye'nin Sualtı Yaşamı</h4>
+                    
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm bg-light">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold text-dark mb-2">🐟 Orfoz (Dusky Grouper)</h6>
+                            <p class="small text-muted mb-0">Türkiye'nin güney kıyılarının (özellikle Kaş) simge balıklarından biridir. Kayalık alanlarda yaşar, dalgıçlara karşı oldukça meraklıdır ancak nesli tükenme tehlikesi altındadır.</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm bg-light">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold text-dark mb-2">🐢 Caretta Caretta</h6>
+                            <p class="small text-muted mb-0">Akdeniz'in kadim deniz kaplumbağaları. Genellikle sığ sularda ve deniz çayırlarında beslenirken görülürler. Oldukça uysaldırlar ve fotoğrafçılar için harika poz verirler.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm bg-light">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold text-dark mb-2">🐍 Müren (Moray Eel)</h6>
+                            <p class="small text-muted mb-0">Kayalıkların kovuklarında yaşarlar. Gündüzleri sadece kafalarını dışarı çıkarıp nefes almak için ağızlarını açıp kapatırlar. Kışkırtılmadıkça insanlara zararsızdırlar.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm bg-light">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold text-dark mb-2">🦁 Aslan Balığı (Lionfish)</h6>
+                            <p class="small text-muted mb-0">Kızıldeniz'den Akdeniz'e göç eden istilacı bir türdür. Görsel olarak çok estetik olsa da sırtındaki yelpaze şeklindeki dikenleri zehirlidir, kesinlikle temas edilmemelidir.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="card border-0 shadow-sm bg-light">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold text-dark mb-2">🐙 Bayağı Ahtapot (Common Octopus)</h6>
+                            <p class="small text-muted mb-0">Sualtının kamuflaj ustalarıdır. Saniyeler içinde bulundukları kayanın rengini ve dokusunu alabilirler. Çok zeki canlılardır, usta dalgıçlar tarafından kolayca gözlemlenebilirler.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="card bg-light border-0 shadow-sm h-100 p-3">
-                      <h6 class="fw-bold text-info text-center">CMAS</h6>
-                      <p class="small text-muted mb-0">Dünya Sualtı Aktiviteleri Konfederasyonu. Türkiye'deki (TSSF) resmi ehliyetler CMAS altyapısına sahiptir. 1, 2 ve 3 Yıldız olarak derecelendirilir.</p>
+
+                  <div class="tab-pane fade" id="v-pills-ekipman" role="tabpanel">
+                    <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Temel Dalış Ekipmanları</h4>
+                    <ul class="list-group list-group-flush bg-transparent">
+                      <li class="list-group-item bg-transparent border-0 px-0 pb-3"><strong>🥽 Maske & Şnorkel:</strong> Su altında net görüş sağlar ve yüzeyde nefes almayı kolaylaştırır.</li>
+                      <li class="list-group-item bg-transparent border-0 px-0 pb-3"><strong>🦶 Paletler:</strong> Suyun içinde daha az enerji harcayarak güçlü bir şekilde ilerlemenizi sağlar.</li>
+                      <li class="list-group-item bg-transparent border-0 px-0 pb-3"><strong>🦺 BCD (Denge Yeleği):</strong> Tüpü taşımanızı ve su içindeki yüzerliğinizi ayarlamanızı sağlar.</li>
+                      <li class="list-group-item bg-transparent border-0 px-0 pb-3"><strong>🎛️ Regülatör:</strong> Tüpteki yüksek basınçlı havayı soluyabileceğiniz basınca indirgeyen donanımdır.</li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-kurslar" role="tabpanel">
+                    <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Kariyer Yolu ve Eğitimler</h4>
+                    <div class="mb-4">
+                      <h6 class="fw-bold text-dark">1. Open Water Diver (Açık Su Dalgıcı)</h6>
+                      <p class="small text-muted mb-0">Başlangıç seviyesidir. Dünyanın her yerinde 18 metreye kadar dalış yapma yetkisi verir.</p>
+                    </div>
+                    <div class="mb-4">
+                      <h6 class="fw-bold text-dark">2. Advanced Open Water (İleri Seviye)</h6>
+                      <p class="small text-muted mb-0">Gece dalışı, derin dalış (30 metre) ve yön bulma gibi özel becerileri kazandırır.</p>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold text-dark">3. Rescue Diver (Kurtarma Dalgıcı)</h6>
+                      <p class="small text-muted mb-0">Sualtında oluşabilecek acil durumları önlemeyi ve müdahale etmeyi öğretir.</p>
                     </div>
                   </div>
+
+                  <div class="tab-pane fade" id="v-pills-ehliyetler" role="tabpanel">
+                    <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Uluslararası Sertifikasyonlar</h4>
+                    <p class="small text-muted mb-4">Dalış ehliyetleri sürücü belgesi gibidir, bir kere aldığınızda dünyanın her yerinde ömür boyu geçerlidir.</p>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="card bg-light border-0 shadow-sm h-100 p-3 text-center">
+                          <h5 class="fw-bold text-primary mb-2">PADI</h5>
+                          <p class="small text-muted mb-0">Dünyanın en yaygın ticari dalış organizasyonudur. Gittiğiniz herhangi bir ülkedeki dalış okullarının %80'i PADI sistemini kullanır.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card bg-light border-0 shadow-sm h-100 p-3 text-center">
+                          <h5 class="fw-bold text-info mb-2">CMAS</h5>
+                          <p class="small text-muted mb-0">Dünya Sualtı Aktiviteleri Konfederasyonu. Türkiye'deki (TSSF) resmi ehliyetler CMAS altyapısına sahiptir.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
+
     {{ bootstrap.load_js() }}
     {{ moment.include_moment() }}
     {{ moment.locale('tr') }}
