@@ -18,6 +18,9 @@ class User(UserMixin, db.Model):
     about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
 
     projects: so.WriteOnlyMapped['Project'] = so.relationship(back_populates='author')
+    
+    # KULLANICI İLE YORUMLAR ARASINDAKİ İLİŞKİ EKLENDİ
+    comments: so.WriteOnlyMapped['Comment'] = so.relationship(back_populates='author')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -60,15 +63,20 @@ class Project(db.Model):
 
     author: so.Mapped[User] = so.relationship(back_populates='projects')
     
-    # Yeni eklenen Comment modeli ile olan ilişki (One-to-Many)
+    # PROJE (GÖNDERİ) İLE YORUMLAR ARASINDAKİ İLİŞKİ
     comments: so.WriteOnlyMapped['Comment'] = so.relationship(back_populates='project')
 
 
-# --- HOCANIN ZORUNLU TUTTUĞU 3. MODEL EKLENDİ ---
+# --- HOCANIN ZORUNLU TUTTUĞU 3. MODEL (YORUMLAR) ---
 class Comment(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     body: so.Mapped[str] = so.mapped_column(sa.String(140))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+    
+    # 1. İlişki: Yorum hangi projeye/dalış günlüğüne yapıldı?
     project_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Project.id), index=True)
-
     project: so.Mapped[Project] = so.relationship(back_populates='comments')
+    
+    # 2. İlişki: Yorumu hangi kullanıcı yaptı? (İşte bunu ekledik!)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
+    author: so.Mapped[User] = so.relationship(back_populates='comments')
