@@ -48,6 +48,11 @@
                 📍 {{ _('Keşif Haritası') }}
               </a>
             </li>
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="btn btn-outline-light text-white fw-bold rounded-pill px-3 py-1 shadow-sm" href="#" data-bs-toggle="modal" data-bs-target="#depthModal" style="background-color: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5);">
+                🌊 {{ _('Derinlik Haritası') }}
+              </a>
+            </li>
           </ul>
 
           <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
@@ -134,6 +139,23 @@
       </div>
     </div>
 
+    <div class="modal fade" id="depthModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);">
+          <div class="modal-header border-bottom-0 pb-0">
+            <h5 class="modal-title fw-bold text-primary">🌊 {{ _('Batimetri ve Deniz Derinlik Haritası') }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm" style="border: 3px solid rgba(0, 123, 255, 0.3);">
+              <iframe src="https://map.openseamap.org/?zoom=7&lat=37.5&lon=27.5&layers=BFTFFFFFFTF0FFFFFFFF" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p class="text-muted small mt-2 mb-0 text-center">OpenSeaMap altyapısı ile denizlerdeki derinlik kontürlerini, sığlıkları ve batık bölgelerini inceleyebilirsiniz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="modal fade" id="guideModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0 shadow-lg overflow-hidden" style="background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);">
@@ -156,7 +178,6 @@
 
               <div class="col-md-9 p-4 p-md-5">
                 <div class="tab-content text-dark" id="v-pills-tabContent">
-                  
                   <div class="tab-pane fade show active" id="v-pills-baliklar" role="tabpanel">
                     <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Türkiye'nin Sualtı Yaşamı</h4>
                     <div class="row g-3">
@@ -202,7 +223,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="tab-pane fade" id="v-pills-ekipman" role="tabpanel">
                     <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Temel Dalış Ekipmanları</h4>
                     <ul class="list-group list-group-flush bg-transparent">
@@ -212,7 +232,6 @@
                       <li class="list-group-item bg-transparent border-0 px-0 pb-3"><strong>🎛️ Regülatör:</strong> Tüpteki yüksek basınçlı havayı soluyabileceğiniz basınca indirgeyen donanımdır.</li>
                     </ul>
                   </div>
-
                   <div class="tab-pane fade" id="v-pills-kurslar" role="tabpanel">
                     <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Kariyer Yolu ve Eğitimler</h4>
                     <div class="mb-4">
@@ -228,7 +247,6 @@
                       <p class="small text-muted mb-0">Sualtında oluşabilecek acil durumları önlemeyi ve müdahale etmeyi öğretir.</p>
                     </div>
                   </div>
-
                   <div class="tab-pane fade" id="v-pills-ehliyetler" role="tabpanel">
                     <h4 class="fw-bold text-primary border-bottom pb-2 mb-4">Uluslararası Sertifikasyonlar</h4>
                     <p class="small text-muted mb-4">Dalış ehliyetleri sürücü belgesi gibidir, bir kere aldığınızda dünyanın her yerinde ömür boyu geçerlidir.</p>
@@ -247,7 +265,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
