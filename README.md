@@ -3,7 +3,7 @@
 Bu proje, Gazi Üniversitesi TUSAŞ Kazan MYO İnternet Programcılığı dersi kapsamında "AI Ajan Destekli Vibe Coding" yaklaşımıyla geliştirilmiş bir web uygulamasıdır.
 
 ## 🎥 Proje Demo Videosu
-[Buraya yarın çekeceğin YouTube veya Google Drive video linkini yapıştıracaksın]
+https://youtu.be/kiwDK70FyU8
 
 ## 🚀 Kullanılan Teknolojiler
 * **Backend:** Python, Flask 3.x, Blueprint Mimari
