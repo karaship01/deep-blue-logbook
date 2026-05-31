@@ -29,7 +29,7 @@ Hata almanın aslında ortam (environment) ve sürüm kontrol (git) yönetimiyle
 ### Sonraki Oturum İçin Notlar
 GitHub'da uzak bir depo (repository) oluşturup `git push` ile bu yerel kodları buluta taşıyacağım. Ardından 10. Bölüm'deki (Şifre Sıfırlama) e-posta entegrasyonu kodlarını yazmaya başlayacağız.
 
----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 ## Oturum 2 - 22 Mayıs 2026
 
@@ -216,3 +216,26 @@ Model: Gemini 3 Pro
 
 ### Bu Oturumdan Öğrendiğim
 Backend kodları ne kadar iyi olursa olsun, son kullanıcıya hitap eden UI/UX tasarımının projenin kalitesini belirlediğini gördüm. Ayrıca Bootstrap sınıflarının birbiriyle nasıl çatışabileceğini ve bu tarz CSS hatalarını ayıklamayı deneyimledim.
+----------------------------------------------------------------------------------------------
+## Oturum 9: Finalizasyon, Temizlik ve Proje Teslimi (31 Mayıs 2026)
+
+**Yapılanlar:**
+- **UI/UX Optimizasyonu:** Navigasyon barı (navbar) "altın oran" kuralına uygun şekilde yeniden düzenlendi. Logo, marka ismi ve etkileşimli butonlar (Keşif, Derinlik, Radar) simetrik bir yapıda hizalandı.
+- **Repository Temizliği:** `.gitignore` dosyası profesyonel standartlara getirildi. `.venv` klasörü ve gereksiz çalışma notları (dokuman.md) Git takibinden çıkarılarak repo boyutunun küçülmesi ve profesyonel görünmesi sağlandı.
+- **Dokümantasyon:** Projenin kurulum ve kullanım detaylarını içeren `README.md` dosyası güncellendi. Demo videosuna erişim için YouTube bağlantısı eklenerek teslimat hazır hale getirildi.
+- **Dağıtım Hazırlığı:** Projenin `docker-compose` ve `Dockerfile` ile her ortamda çalışabilirliği onaylandı.
+- **Son Kontroller:** Reponun "Public" (Halka Açık) olduğu ve tüm commit geçmişinin (31+ commit) kurallara uygun olduğu doğrulandı.
+
+**Kullanılan Teknolojiler & Özellikler Özeti:**
+- **Web Framework:** Flask
+- **Veritabanı:** SQLAlchemy (User, Post, Comment modelleri)
+- **Güvenlik:** Flask-Login ile Auth sistemi ve CSRF koruması.
+- **Entegrasyonlar:** OpenSeaMap (Batimetri), Windy.com (Radar), Google Maps (Keşif).
+- **Modern Arayüz:** Bootstrap 5, Modal yapıları, Glass-morphism efektleri.
+- **Ops:** Docker ve Docker-Compose konfigürasyonu.
+- **Yerelleştirme:** Flask-Babel ile çoklu dil desteği yapısı.
+
+**Sonuç:**
+Proje, teslim edilen tüm gereksinimleri (çalışan kod, dökümantasyon, demo videosu, Docker desteği) karşılayacak şekilde paketlenmiştir. Bu süreç, sadece kod yazmayı değil; bir yazılım projesinin dokümantasyon, versiyon kontrolü ve kullanıcı odaklı tasarım (UX) süreçlerini yönetme becerimi geliştirdi. 
+
+Proje teslim aşamasına hazırdır. 🚀
